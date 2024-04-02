@@ -14,6 +14,7 @@ app.use(cors({
 }));
 
 
+
 export const sequelize = new Sequelize('noteservice', "root", '1234', {
   dialect: "mysql",
   host: "localhost",
