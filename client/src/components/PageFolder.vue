@@ -28,7 +28,7 @@ export default{
     },
     mounted(){
         axios
-        .get('http://localhost:7335/folder')
+        .get('http://localhost:7335/api/folder')
         .then((res)=>{
             this.objs=res.data
             console.log(this.objs)
