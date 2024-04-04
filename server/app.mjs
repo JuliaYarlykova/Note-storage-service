@@ -6,8 +6,11 @@ const sequelize = require("./models/sequelize");
 const express = require("express");
 const cors = require("cors");
 const FolderRouter = require("./routes/folder-routes");
+const UserRouter = require("./routes/user-router");
 const app = express();
 const PORT = 7335;
+
+app.use(express.json())
 
 app.use(
   cors({
@@ -17,6 +20,7 @@ app.use(
 );
 
 app.use(FolderRouter);
+app.use(UserRouter);
 
 try {
   await sequelize.authenticate();

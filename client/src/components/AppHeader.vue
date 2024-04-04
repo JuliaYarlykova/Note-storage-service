@@ -2,39 +2,50 @@
     <header class="app-header">
         <div class="app-header__container">
             <div class="app-header__left-button">
-                <div class="app-header__user-icon">
-                    <img src="../assets/img/user.png" alt="userIcon" class="user-icon">
-                </div>
+
                 <nav class="app-header__nav">
+                    <routerLink href="#" class="icon-link" to='/'>
+                        <SvgHome class="home-icon"></SvgHome>
+                    </routerLink>
+
                     <routerLink href="#" class="icon-link" to='/folder'>
                         <SvgFolder class="folder" />
                     </routerLink>
-                    <button href="#" class="icon-link" >
+                    <button href="#" class="icon-link">
                         <SvgNote class="note"></SvgNote>
                     </button>
                 </nav>
-            </div> 
-            <nav class="app-header__home-page">
-                <routerLink href="#" class="icon-link" to='/'>
-                    <SvgHome class="home-icon"></SvgHome>
-                </routerLink>
-            </nav>
+            </div>
+            <button class="app-header__user-icon">
+                <SvgLodIn v-if="this.$store.getters.isLoggedIn"/>
+                <img v-else src="../assets/img/user.png" alt="userIcon" class="user-icon">
+            </button>
+
 
         </div>
     </header>
 </template>
 
 <script>
+import { useUserStore } from '@/stores/useUserStore';
 import SvgFolder from './svg/SvgFolder.vue';
 import SvgHome from './svg/SvgHome.vue';
+import SvgLodIn from './svg/SvgLodIn.vue';
 import SvgNote from './svg/SvgNote.vue';
 export default {
     components: {
         SvgFolder,
         SvgHome,
-        SvgNote
+        SvgNote,
+        SvgLodIn
     },
-    emits:['setActiveTab']
+    emits: ['setActiveTab'],
+    computed:{
+        useUserStore,
+    },
+    methods:{
+
+    }
 }
 </script>
 
@@ -81,7 +92,8 @@ export default {
         object-fit: contain;
         overflow: hidden;
     }
-    &__nav{
+
+    &__nav {
         display: flex;
         align-items: center;
         margin-left: auto;
@@ -96,9 +108,10 @@ export default {
     left: 0;
 
 }
-.icon-link{
-    & + & {
-      margin-left: 30px;
+
+.icon-link {
+    &+& {
+        margin-left: 30px;
     }
 }
 </style>
