@@ -6,7 +6,10 @@ import App from './App.vue'
 import PageFolder from './components/PageFolder.vue'
 import PageMain from './components/PageMain.vue'
 
+import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
+
+const pinia = createPinia()
 
 
 
