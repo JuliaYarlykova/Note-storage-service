@@ -7,7 +7,7 @@ const Folder = sequelize.define('folder', {
       primaryKey: true,
     },
     title: Sequelize.STRING,
-    id_user:{
+    idUser:{
       type:Sequelize.INTEGER,
       foreignKey: true
     }

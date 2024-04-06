@@ -1,6 +1,9 @@
 <template>
     <main class="page-folder">
         <div class="page-folder__container">
+            <p class="page-folder__text" v-show="show">
+                вы не зашли в систему
+            </p>
             <div class="page-header__wrap"  v-for="obj in objs">
                 <CardFolder
              class="page-folder__card"
@@ -14,6 +17,7 @@
 </template>
 
 <script>
+import { useUserStore } from '@/main';
 import axios from 'axios';
 import CardFolder from './card/CardFolder.vue';
 export default{
@@ -21,30 +25,35 @@ export default{
     components:{
         CardFolder
     },
+    setup() {
+    return {
+      store: useUserStore()
+    }
+  },
     data(){
         return{
-            objs:{}
+            objs:{},
+            show:false
         }
     },
     mounted(){
-        axios
-        .get('http://localhost:7335/api/folder')
+        if(this.store.id !==0)
+        {axios
+        .get(`http://localhost:7335/api/folder/${this.store.id}`)
         .then((res)=>{
             this.objs=res.data
             console.log(this.objs)
-        })
+        })}
+        else{
+            this.show = true
+        }
     }
 }
 </script>
 
 <style lang="less">
 
-.container{
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+
 
 .page-folder{
     &__container{
