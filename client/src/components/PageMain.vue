@@ -43,20 +43,7 @@ export default{
 
 <style lang="less">
 
-@blue: #BAE9F4;
-@white2: #E5E5E5;
-@black: #000000;
-@white1: #ffffff;
-@dark_blue: #8CBEC8;
 
-
-
-.container{
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
 
 .page-main{
     &__container{

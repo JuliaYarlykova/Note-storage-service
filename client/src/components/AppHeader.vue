@@ -16,53 +16,55 @@
                     </button>
                 </nav>
             </div>
-            <button class="app-header__user-icon">
-                <SvgLodIn v-if="this.$store.getters.isLoggedIn"/>
-                <img v-else src="../assets/img/user.png" alt="userIcon" class="user-icon">
+            <button class="app-header__user-icon" @click="showModal()">
+                <SvgLodIn />
+                <!-- <img v-else src="../assets/img/user.png" alt="userIcon" class="user-icon"> -->
             </button>
 
 
         </div>
     </header>
+    <AuthPP v-show="isModalVisibleReg" @close="closeModal()" />
+    <LoginPP  v-show="isModalVisible" @close="closeModalAuth()" />
 </template>
 
 <script>
-import { useUserStore } from '@/stores/useUserStore';
+import AuthPP from './pp/AuthPP.vue';
 import SvgFolder from './svg/SvgFolder.vue';
 import SvgHome from './svg/SvgHome.vue';
 import SvgLodIn from './svg/SvgLodIn.vue';
 import SvgNote from './svg/SvgNote.vue';
+import LoginPP from './pp/LoginPP.vue'
 export default {
     components: {
         SvgFolder,
         SvgHome,
         SvgNote,
-        SvgLodIn
+        SvgLodIn,
+        AuthPP,
+        LoginPP
     },
-    emits: ['setActiveTab'],
-    computed:{
-        useUserStore,
+    data () {
+      return {
+        isModalVisibleReg: false,
+        isModalVisible: false,
+      };
     },
-    methods:{
-
-    }
+    methods: {
+      showModal() {
+        this.isModalVisibleReg = true;
+      },
+      closeModalAuth(){
+        this.isModalVisible = false;
+      },
+      closeModal() {
+        this.isModalVisibleReg = false;
+      }
+    },
 }
 </script>
 
 <style lang="less">
-.container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
-
-}
-
-@blue: #BAE9F4;
-@white2: #E5E5E5;
-@black: #000000;
-@white1: #ffffff;
-@dark_blue: #8CBEC8;
 
 
 

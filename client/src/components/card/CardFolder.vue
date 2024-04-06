@@ -23,12 +23,6 @@ export default {
 </script>
 
 <style lang="less">
-@blue: #BAE9F4;
-@white2: #E5E5E5;
-@black: #000000;
-@white1: #ffffff;
-@dark_blue: #8CBEC8;
-@gray: #F4F4F4;
 
 
 .folder {
