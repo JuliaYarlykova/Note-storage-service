@@ -1,18 +1,15 @@
 const sequelize = require('./sequelize')
 const Sequelize = require('sequelize')
 
-const Note = sequelize.define('note',{
+const CommonNote = sequelize.define('commonNote',{
     id:{
         type: Sequelize.INTEGER,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,
     },
-    title: Sequelize.STRING,
-    idFolder: Sequelize.INTEGER,
-    file: Sequelize.BLOB,
-
+    idNote: Sequelize.INTEGER
 }    
 );
 
-module.exports = Note
+module.exports = CommonNote
