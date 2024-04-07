@@ -1,62 +1,47 @@
 <template>
     <main class="page-main">
         <div class="page-main__container">
+            <div class="page-main__wrap"  v-for="obj in objs">
+                
             <CardNote
-            class="page-folder__card"
-            :title="'математика'"
-            :author="'Юлия Ярлыкова'"
-            />
-            <CardNote
-            class="page-folder__card"
-            :title="'математика'"
-            :author="'Юлия Ярлыкова'"
-            />
-            <CardNote
-            class="page-folder__card"
-            :title="'математика'"
-            :author="'Юлия Ярлыкова'"
-            />
-            <CardNote
-            class="page-folder__card"
-            :title="'математика'"
-            :author="'Юлия Ярлыкова'"
-            />
-            <CardNote
-            class="page-folder__card"
-            :title="'математика'"
-            :author="'Юлия Ярлыкова'"
-            />
+             class="page-main__card"
+             :title="obj.title"
+             :author="obj.author"
+              />
+            </div>
         </div>
 
     </main>
 </template>
 
 <script>
+import axios from 'axios';
 import CardNote from './card/CardNote.vue';
 
 export default{
     components:{
         CardNote
+    },
+    data(){
+        return{
+            objs:{}
+        }
+    },
+    mounted(){
+        
+        axios
+        .get(`http://localhost:7335/api/commonnote`)
+        .then((res)=>{
+            this.objs=res.data
+            console.log(res.data)
+        })
     }
 }
 </script>
 
 <style lang="less">
 
-@blue: #BAE9F4;
-@white2: #E5E5E5;
-@black: #000000;
-@white1: #ffffff;
-@dark_blue: #8CBEC8;
 
-
-
-.container{
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
 
 .page-main{
     &__container{

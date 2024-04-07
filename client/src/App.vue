@@ -15,11 +15,14 @@ export default{
       activeTab:'home'
     }
   },
-  methods: {
-    setActiveTab(value) {
-      this.activeTab = value;
-    }
-  }
+  // methods: {
+  //   setActiveTab(value) {
+  //     this.activeTab = value;
+  //   }
+  // },
+  // mounted() {
+  //           this.$store.commit('setAuthUser', window.auth_user);
+  //       }
 }
 
 </script>
