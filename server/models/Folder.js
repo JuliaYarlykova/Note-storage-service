@@ -5,6 +5,8 @@ const Folder = sequelize.define('folder', {
     id_folder:{
       type: Sequelize.INTEGER,
       primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
     },
     title: Sequelize.STRING,
     idUser:{
