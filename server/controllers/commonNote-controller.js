@@ -1,5 +1,8 @@
 const { request, response } = require("express");
 const CommonNote = require("../models/CommonNote");
+const Note = require('../models/Note')
+const User = require('../models/User')
+const Folder = require('../models/Folder')
 
 const getCommonNote = (request, response) => {
   CommonNote.findAll({ raw: true })
@@ -14,14 +17,12 @@ const getCommonNote = (request, response) => {
 
 const postCommonNote = async (request,response)=>{
   try {const { idNote } = request.body
-  const other = await CommonNote.findOne({ where: { idNote } });
-  if (other){
-    response
-        .status(400)
-        .json({ message: "note with such id already exist" });
-  }
+  const note = await Note.findByPK(idNote);
+  const folder = await Folder.findByPK(note.idFolder)
+  const user = await User.findByPK(folder.idUser)
   const commonNote = CommonNote.create({
-    idNote:idNote
+    title:note.title,
+    author:user.username
   })
   response.status(201).json({commonNote})}
   catch {

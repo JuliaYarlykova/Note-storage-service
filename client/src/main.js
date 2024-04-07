@@ -8,6 +8,8 @@ import PageMain from './components/PageMain.vue'
 
 import { createPinia, defineStore } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
+import PageOneFolder from './components/PageOneFolder.vue'
+import PageOneNote from './components/PageOneNote.vue'
 import AuthPP from './components/pp/AuthPP.vue'
 import LoginPP from './components/pp/LoginPP.vue'
 
@@ -17,13 +19,26 @@ export const useUserStore = defineStore('counter', {
   
 })
 
+export const useFolderStore = defineStore('folder', {
+  state: () => ({ title: '' }),
+  
+})
+
+export const useNoteStore = defineStore('note', {
+  state: () => ({ title: '' }),
+  
+})
+
 
 const routes = [
     { path: '/', component: PageMain },
     { path: '/folder', component: PageFolder },
     {path: '/auth', component: LoginPP},
     {path: '/registration', component: AuthPP},
-    
+    {path: '/folder/:title', component: PageOneFolder, name: 'intoFolder'},
+    {path: '/folder/:title/:titleNote', component: PageOneNote, name:'intoNote'},
+    {path: '/:commonNote', component: AuthPP},
+
   ]
   
   const router = createRouter({

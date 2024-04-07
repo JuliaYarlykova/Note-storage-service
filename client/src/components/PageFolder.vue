@@ -5,7 +5,7 @@
                 вы не зашли в систему
             </p>
             <div class="page-header__wrap"  v-for="obj in objs">
-                <CardFolder
+                <CardFolder @click="toFolder(obj.title)"
              class="page-folder__card"
              :title="obj.title"
               />
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { useUserStore } from '@/main';
+import { useFolderStore, useUserStore } from '@/main';
 import axios from 'axios';
 import CardFolder from './card/CardFolder.vue';
 export default{
@@ -27,7 +27,8 @@ export default{
     },
     setup() {
     return {
-      store: useUserStore()
+      store: useUserStore(),
+      store2: useFolderStore()
     }
   },
     data(){
@@ -46,6 +47,12 @@ export default{
         })}
         else{
             this.show = true
+        }
+    },
+    methods:{
+        toFolder(value){
+            this.store2.title = value
+            this.$router.push({name:'intoFolder', params: {title: value}})
         }
     }
 }

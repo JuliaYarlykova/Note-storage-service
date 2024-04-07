@@ -8,7 +8,8 @@ const CommonNote = sequelize.define('commonNote',{
       allowNull: false,
       autoIncrement: true,
     },
-    idNote: Sequelize.INTEGER
+    title: Sequelize.STRING,
+    author: Sequelize.STRING
 }    
 );
 
