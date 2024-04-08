@@ -2,7 +2,7 @@ const sequelize = require('./sequelize')
 const Sequelize = require('sequelize')
 
 const Folder = sequelize.define('folder', {
-    id_folder:{
+    id:{
       type: Sequelize.INTEGER,
       primaryKey: true,
       allowNull: false,
