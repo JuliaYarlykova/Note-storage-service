@@ -29,12 +29,14 @@ const getOneNote = async (request, response) => {
     });
 }
 
-const postNote = (request, response) =>{
+const postNote = async (request, response) =>{
   try{
-    const {title, idFolder, file} = request.body
+    const {title, titleFolder, file} = request.body
+    console.log(titleFolder)
+    const idFolder = await Folder.findOne({where: {title: titleFolder}})
     const note = Note.create({
       title: title,
-      idFolder:idFolder,
+      idFolder:idFolder.id,
       file:file
     })
     response.status(201).json({note})
