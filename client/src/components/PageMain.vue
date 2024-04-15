@@ -4,6 +4,7 @@
             <div class="page-main__wrap"  v-for="obj in objs">
                 
             <CardNote
+            @click="toFolder(obj.title)"
              class="page-main__card"
              :title="obj.title"
              :author="obj.author"
@@ -15,8 +16,10 @@
 </template>
 
 <script>
+import { useNoteStore } from '@/main';
 import axios from 'axios';
 import CardNote from './card/CardNote.vue';
+
 
 export default{
     components:{
@@ -27,6 +30,11 @@ export default{
             objs:{}
         }
     },
+    setup() {
+        return {
+            store2: useNoteStore()
+        }
+    },
     mounted(){
         
         axios
@@ -35,6 +43,12 @@ export default{
             this.objs=res.data
             console.log(res.data)
         })
+    },
+    methods:{
+        toFolder(value){
+            this.store2.title = value
+            this.$router.push({name:'intoNoteFromMain', params: {titleNote: value}})
+        },
     }
 }
 </script>

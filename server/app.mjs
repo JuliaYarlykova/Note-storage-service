@@ -1,7 +1,8 @@
 import { createRequire } from "module";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const User = require("./models/User");
 const sequelize = require("./models/sequelize");
 const express = require("express");
 const cors = require("cors");
@@ -11,6 +12,11 @@ const NoteRouter = require('./routes/note-router')
 const CommonNoteRouter = require('./routes/commonNote-router')
 const app = express();
 const PORT = 7335;
+const __filename = fileURLToPath(import.meta.url);
+// 👇️ "/home/john/Desktop/javascript"
+const __dirname = path.dirname(__filename);
+global.__basedir = __dirname;
+
 
 app.use(express.json())
 

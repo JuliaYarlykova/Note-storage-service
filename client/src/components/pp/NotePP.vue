@@ -10,7 +10,7 @@
           <input type="text" class="pp-note__input" placeholder="название" v-model.trim="formData.title">
           <div class="input-file-row">
             <label class="input-file" v-on:change="inputChange()">
-              <input class="js-input-file" type="file" name="file[]" multiple>
+              <input class="js-input-file" type="file" name="file" multiple>
               <span>Выберите файл</span>
             </label>
             <div class="input-file__wrapper">
@@ -56,9 +56,9 @@ export default {
     return {
       formData: {
         title: '',
-        titleFolder: this.store2.title,
-        file: []
+        titleFolder: this.store2.title
       },
+      file:[],
       fs:[]
     }
   },
@@ -72,23 +72,41 @@ export default {
       this.$emit('close');
     },
     async createPost() {
+      // await axios
+      //   .post('http://localhost:7335/api/note', this.formData)
+      //   .then((res) => {
+          
+      //   })
+        const formData = new FormData()
+        formData.append('title', this.formData.title)
+        formData.append('titleFolder',this.formData.titleFolder)
+        for (const file of this.file){
+          formData.append('file', file);
+        }
+        console.log(formData);
       await axios
-        .post('http://localhost:7335/api/note', this.formData)
-        .then((res) => {
-          console.log(this.formData)
-          this.closeRegistration()
-        })
+      .post('http://localhost:7335/api/note',formData,
+  {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    }
+  })
+      .then((res) => {
+        console.log(this.file);
+        this.closeRegistration()
+      })
     },
     inputChange() {
       const files = document.querySelector('.js-input-file');
-      this.formData.file.push(files.files[0])
+      this.file.push(files.files[0])
       const file_split = files.value.split('\\')
       this.fs.push(file_split[file_split.length - 1])
     },
     deleteBlock(el){
       const index = this.fs.indexOf(el)
       this.fs.splice(index, 1)
-    }
+    },
+    
   }
 }
 </script>

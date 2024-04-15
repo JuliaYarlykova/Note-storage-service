@@ -10,8 +10,9 @@ const Note = sequelize.define('note',{
     },
     title: Sequelize.STRING,
     idFolder: Sequelize.INTEGER,
-    file: Sequelize.BLOB,
-
+    data: Sequelize.BLOB,
+    name: Sequelize.STRING,
+    type:Sequelize.STRING,
 }    
 );
 
