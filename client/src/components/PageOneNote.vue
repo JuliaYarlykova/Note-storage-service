@@ -1,8 +1,11 @@
 <template>
     <div class="one-note">
-        <div class="one-note__container js-img">
+        <div class="one-note__container ">
             <h1 class="one-note__title">{{ title }}</h1>
             <h2 class="one-note__title">{{ folder }}</h2>
+            <div class="one-note__wrap" v-for="i in iss">
+                <img v-bind:src=i alt="" class="one-note__img js-img">
+            </div>
             
         </div>
     </div>
@@ -22,7 +25,8 @@ export default {
                 name: '',
                 type: '',
                 blob: ''
-            }
+            },
+            iss:[]
 
         }
 
@@ -42,14 +46,14 @@ export default {
                 this.fileData.name = res.data.note.name
                 this.fileData.type = res.data.note.type
                 this.fileData.blob = res.data.note.data
-                
-                // let ndp = new DOMParser()
-                // let nDoc = ndp.parseFromString(res.data.html, "text/html")
-                // console.log(nDoc.document.body)
+                console.log(res.data)
+                this.iss=res.data.obj
+                // const searchPic = new Image(100, 100);
+                // searchPic.src = res.data.html;
                 // const imgTag = document.querySelector('.js-img')
-                // const divelem = document.createElement('div')
-                // divelem.append(nDoc)
-                // imgTag.append(divelem)
+
+                // imgTag.src = searchPic.src
+                // console.log(imgTag, imgTag.src, searchPic)
             })
     },
 
