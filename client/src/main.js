@@ -16,6 +16,7 @@ import PageOneNote from './components/PageOneNote.vue'
 import AuthPP from './components/pp/AuthPP.vue'
 import LoginPP from './components/pp/LoginPP.vue'
 import NotePP from './components/pp/NotePP.vue'
+import PageNote from './components/PageNote.vue'
 
 const pinia = createPinia()
 export const useUserStore = defineStore('counter', {
@@ -43,6 +44,7 @@ const routes = [
     {path: '/folder/:title/:titleNote', component: PageOneNote, name:'intoNote'},
     {path: '/:commonNote', component: AuthPP},
     {path: '/folder/:title/createNote', component: NotePP},
+    {path: '/createnotes', component: PageNote}
 
   ]
   
