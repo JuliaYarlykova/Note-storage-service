@@ -1,15 +1,17 @@
 const sequelize = require('./sequelize')
 const Sequelize = require('sequelize')
 
-const Note = sequelize.define('note',{
+const File = sequelize.define('file',{
     id:{
         type: Sequelize.STRING,
       primaryKey: true,
       allowNull: false,
     },
-    title: Sequelize.STRING,
-    idFolder: Sequelize.INTEGER
+    data: Sequelize.BLOB,
+    name: Sequelize.STRING,
+    type:Sequelize.STRING,
+    idnote: Sequelize.STRING
 }    
 );
 
-module.exports = Note
+module.exports = File

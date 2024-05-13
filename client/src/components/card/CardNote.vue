@@ -48,6 +48,7 @@ export default{
         width: 128px;
         height: 128px;
        background-color: @gray;
+       cursor: pointer;
     }
     &__text{
         display: block;

@@ -11,6 +11,7 @@ import PageMain from './components/PageMain.vue'
 
 import { createPinia, defineStore } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
+import PageNoteCommon from './components/PageNoteCommon.vue'
 import PageOneFolder from './components/PageOneFolder.vue'
 import PageOneNote from './components/PageOneNote.vue'
 import AuthPP from './components/pp/AuthPP.vue'
@@ -44,7 +45,9 @@ const routes = [
     {path: '/folder/:title/:titleNote', component: PageOneNote, name:'intoNote'},
     {path: '/:commonNote', component: AuthPP},
     {path: '/folder/:title/createNote', component: NotePP},
-    {path: '/createnotes', component: PageNote}
+
+    {path: '/folder/:titleNote', component: PageNoteCommon, name:'intoNoteFromMain'},
+
 
   ]
   
