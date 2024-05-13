@@ -3,7 +3,7 @@ const Folder = require("../models/Folder");
 
 const getFolder = (request, response) => {
   const id = request.params.id;
-  Folder.findAll({ where: { idUser: id } })
+   Folder.findAll({ where: { idUser: id } })
     .then((folder) => {
       response.status(200).send(folder);
     })

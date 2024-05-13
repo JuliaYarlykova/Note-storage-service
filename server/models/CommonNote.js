@@ -1,7 +1,7 @@
 const sequelize = require('./sequelize')
 const Sequelize = require('sequelize')
 
-const CommonNote = sequelize.define('commonNote',{
+const CommonNote = sequelize.define('commonnotes',{
     id:{
         type: Sequelize.INTEGER,
       primaryKey: true,
