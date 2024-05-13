@@ -170,12 +170,13 @@ export default {
   &__input {
     box-sizing: border-box;
     border-width: 2px 0px 2px;
+    border-style: solid;
     border-top-color: @dark_blue ;
     border-bottom-color: @dark_blue;
     width: 100%;
     background-color: @white2;
     padding: 17px 20px 16px;
-    color: @black;
+    color: @text_color;
     font-size: 16px;
     height: 55px;
     outline: none;
@@ -210,6 +211,7 @@ export default {
     height: 30px;
     color: @dark_blue;
     margin-top: 20px;
+    text-align: center;
   }
 }
 

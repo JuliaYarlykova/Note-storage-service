@@ -31,6 +31,17 @@ export default{
 
 <style lang="less">
 
+.input{
+    box-sizing: border-box;
+    border: none;
+    width: 130px;
+    background-color: @white1;
+    padding: 5px 2px 5px;
+    color: @black;
+    font-size: 16px;
+    margin-top: 45px;
+    outline: none;
+}
 
 .note{
     &__wrapper{
