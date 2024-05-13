@@ -4,8 +4,10 @@
             <p class="page-folder__text" v-show="show">
                 Вы не вошли в систему
             </p>
+
             <div class="page-folder__wrap">
                 <div class="page-header__for"  v-for="obj in objs">
+
                 <CardFolder @click="toFolder(obj.title)"
              class="page-folder__card"
              :title="obj.title"
@@ -66,6 +68,7 @@ export default{
         toFolder(value){
             this.store2.title = value
             this.$router.push({name:'intoFolder', params: {title: value}})
+
         },
         create(){
             this.show_create = true
@@ -81,6 +84,7 @@ export default{
             this.objs.push({title:this.req.title})
             console.log(this.req, res)
         })
+
 
         }
     }

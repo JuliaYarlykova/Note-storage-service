@@ -30,6 +30,7 @@ const getOneNote = async (request, response) => {
 }
 
 const postNote = async (request, response) =>{
+
   try{
     const {title, titleFolder, file} = request.body
     console.log(titleFolder)

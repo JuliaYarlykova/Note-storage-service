@@ -43,8 +43,10 @@ const routes = [
     {path: '/folder/:title', component: PageOneFolder, name: 'intoFolder'},
     {path: '/folder/:title/:titleNote', component: PageOneNote, name:'intoNote'},
     {path: '/:commonNote', component: AuthPP},
+
     {path: '/folder/:title/createNote', component: NotePP},
     {path: '/createnotes', component: PageNote}
+
 
   ]
   
