@@ -79,7 +79,7 @@ export default{
         .post(`http://localhost:7335/api/folder`,this.req )
         .then((res)=>{
             this.objs.push({title:this.req.title})
-            console.log(this.objs)
+            console.log(this.req, res)
         })
 
         }
