@@ -11,9 +11,9 @@
                     <routerLink href="#" class="icon-link" to='/folder'>
                         <SvgFolder class="folder" />
                     </routerLink>
-                    <button href="#" class="icon-link">
+                    <routerLink href="#" class="icon-link" to="/createnotes">
                         <SvgNote class="note"></SvgNote>
-                    </button>
+                    </routerLink>
                 </nav>
             </div>
             <button class="app-header__user-icon" @click="showModal()">
@@ -119,4 +119,9 @@ export default {
         margin-left: 30px;
     }
 }
+.folder,
+.note{
+    color: @main;
+}
+
 </style>
