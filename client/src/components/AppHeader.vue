@@ -17,8 +17,8 @@
                 </nav>
             </div>
             <button class="app-header__user-icon" @click="showModal()">
-                <SvgLodIn />
-                <!-- <img v-else src="../assets/img/user.png" alt="userIcon" class="user-icon"> -->
+                <SvgLodIn v-show="!store.hasUser" />
+                <img  src="../assets/img/user.png" alt="userIcon" class="user-icon" v-show="store.hasUser">
             </button>
 
 
@@ -29,12 +29,13 @@
 </template>
 
 <script>
+import { useUserStore } from '@/main';
 import AuthPP from './pp/AuthPP.vue';
+import LoginPP from './pp/LoginPP.vue';
 import SvgFolder from './svg/SvgFolder.vue';
 import SvgHome from './svg/SvgHome.vue';
 import SvgLodIn from './svg/SvgLodIn.vue';
 import SvgNote from './svg/SvgNote.vue';
-import LoginPP from './pp/LoginPP.vue'
 export default {
     components: {
         SvgFolder,
@@ -48,6 +49,8 @@ export default {
       return {
         isModalVisibleReg: false,
         isModalVisible: false,
+        store:useUserStore()
+
       };
     },
     methods: {

@@ -1,10 +1,10 @@
 <template>
-    <div class="one-note">
-        <div class="one-note__container ">
-            <h1 class="one-note__title">{{ title }}</h1>
-            <h2 class="one-note__title">{{ folder }}</h2>
-            <div class="one-note__wrap" v-for="i in iss">
-                <img v-bind:src=i alt="" class="one-note__img js-img">
+    <div class="one-noteCommon">
+        <div class="one-noteCommon__container ">
+            <h1 class="one-noteCommon__title">{{ title }}</h1>
+            <h2 class="one-noteCommon__title">{{ folder }}</h2>
+            <div class="one-noteCommon__wrap" v-for="i in iss">
+                <img v-bind:src=i alt="" class="one-noteCommon__img js-img">
             </div>
             
         </div>
@@ -39,21 +39,20 @@ export default {
     },
     mounted() {
         axios
-            .get(`http://localhost:7335/api/onenote/${this.store.title}`)
+            .get(`http://localhost:7335/api/commonnote/${this.store.title}`)
             .then((res) => {
                 this.title = res.data.note.title
                 this.folder = this.store2.title
                 this.fileData.name = res.data.note.name
                 this.fileData.type = res.data.note.type
                 this.fileData.blob = res.data.note.data
-                console.log(res.data)
                 this.iss=res.data.obj
-                // const searchPic = new Image(100, 100);
-                // searchPic.src = res.data.html;
-                // const imgTag = document.querySelector('.js-img')
+                // // const searchPic = new Image(100, 100);
+                // // searchPic.src = res.data.html;
+                // // const imgTag = document.querySelector('.js-img')
 
-                // imgTag.src = searchPic.src
-                // console.log(imgTag, imgTag.src, searchPic)
+                // // imgTag.src = searchPic.src
+                // // console.log(imgTag, imgTag.src, searchPic)
             })
     },
 
@@ -62,7 +61,7 @@ export default {
 </script>
 
 <style lang="less">
-.one-note {
+.one-noteCommon {
     &__container {
         .container();
         margin: 100px auto;
