@@ -41,6 +41,7 @@ const getOneNote = async (request, response) => {
       console.error("Ошибка получения  конспекта:", error);
       response.status(500).send("Ошибка получения конспекта");
     });
+
     console.log(obj)
   response.status(200).send({ note, obj });
 };
@@ -65,6 +66,7 @@ const postNote = async (request, response) => {
     }
     Note.create({
       id: id1,
+
       title: title,
       idFolder: idFolder.id,
     });

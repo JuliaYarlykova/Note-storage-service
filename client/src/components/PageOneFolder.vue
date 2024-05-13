@@ -1,6 +1,7 @@
 <template>
     <div class="one-folder">
         <div class="one-folder__container">
+
             <div class="one-folder__wrapper">
                 <div class="page-main__wrap" v-for="obj in objs">
                 <CardNote @click="toFolder(obj.title)" class="page-main__card" :title="obj.title" :author="obj.author" />
@@ -12,17 +13,20 @@
         </div>
     </div>
     <NotePP v-show="isModalVisible" @close="closeModal()" />
+
 </template>
 
 <script>
 import { useFolderStore, useNoteStore } from '@/main';
 import axios from 'axios';
 import CardNote from './card/CardNote.vue';
+
 import NotePP from './pp/NotePP.vue';
 export default {
     components: {
         CardNote,
         NotePP
+
     },
     setup() {
         return {
@@ -32,8 +36,10 @@ export default {
     },
     data() {
         return {
+
             objs: [],
             isModalVisible: false
+
         }
     },
     mounted() {
@@ -48,6 +54,7 @@ export default {
         toFolder(value){
             this.store2.title = value
             this.$router.push({name:'intoNote', params: {titleNote: value}})
+
         },
         closeModal() {
         this.isModalVisible = false;
@@ -55,6 +62,7 @@ export default {
       showModal() {
         this.isModalVisible = true;
       },
+
     }
 }
 </script>
@@ -65,6 +73,7 @@ export default {
         .container();
         margin: 100px auto ;
         display: flex;
+
         flex-direction: column;
         gap: 100px;
         align-items: center;
@@ -77,5 +86,6 @@ export default {
     &__button{
         .button();
     }
+
 }
 </style>

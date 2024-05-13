@@ -24,7 +24,7 @@ const registration = async (request, response) => {
     }
     const candidate = await User.findOne({ where: { login } });
     if (candidate) {
-      response
+      return response
         .status(400)
         .json({ message: "user with such username already exist" });
     }
