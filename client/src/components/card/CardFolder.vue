@@ -1,7 +1,10 @@
 <template>
     <div class="folder__wrapper">
-        <SvgFolder class="folder__icon" />
+        <SvgFolder class="folder__icon" @click="$emit('clickFolder')"/>
         <p class="folder__title">{{ title }}</p>
+        <span class="material-symbols-outlined folder__delete" @click="$emit('deleteFolder', {act:true, title:title} )">
+delete
+</span>
     </div>
 </template>
 
@@ -17,7 +20,7 @@ export default {
             type: String,
             default: ''
         }
-    }
+    },
 }
 
 </script>
@@ -26,7 +29,16 @@ export default {
 
 
 .folder {
+
+    &__delete{
+        position: absolute;
+        bottom: 0;
+        right: 5px;
+        color:blanchedalmond;
+        cursor: pointer;
+    }
     &__wrapper {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;

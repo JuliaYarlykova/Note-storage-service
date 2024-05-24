@@ -4,7 +4,7 @@
 
             <div class="one-folder__wrapper">
                 <div class="page-main__wrap" v-for="obj in objs">
-                <CardNote @click="toFolder(obj.title)" class="page-main__card" :title="obj.title" :author="obj.author" />
+                <CardNote @clickNote="toFolder(obj.title)" class="page-main__card" :title="obj.title" :author="obj.author" @deleteNote="del"/>
             </div>
             </div>
             <button class="one-folder__button" @click="showModal()">
@@ -13,6 +13,7 @@
         </div>
     </div>
     <NotePP v-show="isModalVisible" @close="closeModal()" />
+    <MessagePP v-show="active.act" @deleteF="deleteMes"/>
 
 </template>
 
@@ -20,12 +21,14 @@
 import { useFolderStore, useNoteStore } from '@/main';
 import axios from 'axios';
 import CardNote from './card/CardNote.vue';
+import MessagePP from './pp/MessagePP.vue';
 
 import NotePP from './pp/NotePP.vue';
 export default {
     components: {
         CardNote,
-        NotePP
+        NotePP,
+        MessagePP
 
     },
     setup() {
@@ -36,7 +39,7 @@ export default {
     },
     data() {
         return {
-
+            active: {},
             objs: [],
             isModalVisible: false
 
@@ -51,6 +54,28 @@ export default {
             })
     },
     methods:{
+        deleteMes(act){
+            const obj = {
+                title:this.active.title,
+                idUser:this.store.id
+            }
+           
+            if (act){
+                axios
+                .delete(`http://localhost:7335/api/deletenote`,{data:obj} )
+            .then((res) => {
+                this.objs.forEach((d, index)=>d.title === this.active.title? this.objs.splice(index, 1):console.log(1))
+            })
+            
+            this.active.act = false
+            }else{
+                this.active.act = false
+            }
+        
+        },
+        del(act) {
+            this.active = act
+        },
         toFolder(value){
             this.store2.title = value
             this.$router.push({name:'intoNote', params: {titleNote: value}})

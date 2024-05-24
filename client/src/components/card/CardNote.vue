@@ -1,10 +1,13 @@
 <template>
     <div class="note__wrapper">
-        <div class="note__text">
+        <div class="note__text" @click="$emit('clickNote')">
             <p class="note__title">{{ title }}</p>
             <p class="note__author">{{ author }}</p>
         </div>
         <div class="note__circle"></div>
+        <span class="material-symbols-outlined note__delete" @click="$emit('deleteNote', {act:true, title:title} )">
+            delete
+            </span>
         
     </div>
 </template>
@@ -44,7 +47,16 @@ export default{
 }
 
 .note{
+    
+    &__delete{
+        position: absolute;
+        bottom: 0;
+        right: 5px;
+        color:black;
+        cursor: pointer;
+    }
     &__wrapper{
+        position: relative;
         width: 128px;
         height: 128px;
        background-color: @gray;

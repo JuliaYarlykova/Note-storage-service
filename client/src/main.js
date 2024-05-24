@@ -3,21 +3,22 @@
 // import { BootstrapVue } from 'bootstrap-vue'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 // import 'bootstrap/dist/css/bootstrap.css'
-import { createApp } from 'vue'
-import App from './App.vue'
+import 'material-symbols';
+import { createApp } from 'vue';
+import App from './App.vue';
 
-import PageFolder from './components/PageFolder.vue'
-import PageMain from './components/PageMain.vue'
+import PageFolder from './components/PageFolder.vue';
+import PageMain from './components/PageMain.vue';
 
-import { createPinia, defineStore } from 'pinia'
-import { createRouter, createWebHistory } from 'vue-router'
-import PageNoteCommon from './components/PageNoteCommon.vue'
-import PageOneFolder from './components/PageOneFolder.vue'
-import PageOneNote from './components/PageOneNote.vue'
-import AuthPP from './components/pp/AuthPP.vue'
-import LoginPP from './components/pp/LoginPP.vue'
-import NotePP from './components/pp/NotePP.vue'
-import PageNote from './components/PageNote.vue'
+import { createPinia, defineStore } from 'pinia';
+import { createRouter, createWebHistory } from 'vue-router';
+import PageNote from './components/PageNote.vue';
+import PageNoteCommon from './components/PageNoteCommon.vue';
+import PageOneFolder from './components/PageOneFolder.vue';
+import PageOneNote from './components/PageOneNote.vue';
+import AuthPP from './components/pp/AuthPP.vue';
+import LoginPP from './components/pp/LoginPP.vue';
+import NotePP from './components/pp/NotePP.vue';
 
 const pinia = createPinia()
 export const useUserStore = defineStore('counter', {
