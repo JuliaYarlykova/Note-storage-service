@@ -19,6 +19,7 @@
 
         </div>
         <MessagePP v-show="active.act" @deleteF="deleteMes"/>
+        
 
     </main>
 </template>

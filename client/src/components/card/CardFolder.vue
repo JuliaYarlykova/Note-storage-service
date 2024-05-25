@@ -32,10 +32,11 @@ export default {
 
     &__delete{
         position: absolute;
-        bottom: 0;
-        right: 5px;
-        color:blanchedalmond;
+        bottom: 5px;
+        right: 10px;
+        color: white;
         cursor: pointer;
+        
     }
     &__wrapper {
         position: relative;
