@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-      
+    <ModalSave v-if="active" :folders="objs" @close="closeModal"/>
   </main>
 
 
@@ -49,10 +49,12 @@
   import {useUserStore} from '@/main';
   import axios from 'axios';
   import CardNote from './card/CardNote.vue';
+  import ModalSave from "@/components/pp/ModalSave.vue";
   export default {
   name: 'PageNote',
   components: {
     CardNote,
+    ModalSave
   },
   setup() {
         return {
@@ -70,7 +72,7 @@
                 title: '',
                 idUser: this.store.id
             },
-            folders: []
+            active: false
         }
     },
   mounted() {
@@ -84,7 +86,6 @@
     });
     if (this.store.id !== 0) {
       this.show = false
-      this.getFolders() 
     }
     else {
       this.show = true
@@ -92,6 +93,7 @@
   },
   methods: {
     getFolders() {
+      this.active = true
       if (this.store.id !== 0) {
             axios
                 .get(`http://localhost:7335/api/folder/${this.store.id}`)
@@ -99,7 +101,10 @@
                 this.objs = res.data
                 console.log(this.objs)
             })
-        }
+      }
+    },
+    closeModal() {
+      this.active = false;
     }
   }
 }
