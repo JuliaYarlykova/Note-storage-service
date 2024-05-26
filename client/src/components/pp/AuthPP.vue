@@ -229,7 +229,7 @@ export default {
 		margin-bottom: 60px;
 
 		&::placeholder {
-			color: @placeholder_color;
+			color: @dark_blue;
 		}
 	}
 
