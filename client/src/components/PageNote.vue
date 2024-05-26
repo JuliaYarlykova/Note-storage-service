@@ -1,8 +1,8 @@
 <template>
   <main class="pageNotes">
     <div class="pageNotes__main-container">
-      <p class="page-folder__text" v-show="show">Вы не вошли в систему</p>
-      <div class="pageNotes__panel">
+      <p class="pageNotes__text" v-show="show">Вы не вошли в систему</p>
+      <div class="pageNotes__panel" v-if="!show">
         <div class="pageNotes__title-panel">Цвет текста</div>
         <div class="pageNotes__color-picker radio">
           <label for="color-black" class="radio__label">
@@ -28,32 +28,53 @@
           
         </div>
       </div>
-      <div class="pageNotes__container">
+      <div class="pageNotes__container" v-if="!show">
         <div class="pageNotes__workplace">
           <div class="pageNotes__name">
             <h6 class="pageNotes__title">Название конспекта</h6>
             <input class="pageNotes__input-title"/>
           </div>
           <textarea class="pageNotes__textarea" placeholder="Введите текст"></textarea>
-          <button class="pageNotes__save">Сохранить</button>
+          <button class="pageNotes__save" @click="getFolders">Сохранить</button>
         </div>
       </div>
     </div>
-      
+    <ModalSave v-if="active" :folders="objs" @close="closeModal"/>
   </main>
 
 
 </template>
 
 <script>
-  import { useNoteStore, useUserStore } from '@/main';
+  import {useUserStore} from '@/main';
   import axios from 'axios';
   import CardNote from './card/CardNote.vue';
+  import ModalSave from "@/components/pp/ModalSave.vue";
   export default {
   name: 'PageNote',
   components: {
     CardNote,
+    ModalSave
   },
+  setup() {
+        return {
+            store: useUserStore(),
+        }
+    },
+    data() {
+        return {
+            active: {},
+            objs: [],
+            show: false,
+            show_create: false,
+            title: "<input class='input' />",
+            req: {
+                title: '',
+                idUser: this.store.id
+            },
+            active: false
+        }
+    },
   mounted() {
     const colorInputs = document.querySelectorAll('.pageNotes__color-picker input[type="radio"]');
     const textarea = document.querySelector('.pageNotes__textarea');
@@ -63,6 +84,28 @@
         textarea.style.color = input.value;
       });
     });
+    if (this.store.id !== 0) {
+      this.show = false
+    }
+    else {
+      this.show = true
+    }
+  },
+  methods: {
+    getFolders() {
+      this.active = true
+      if (this.store.id !== 0) {
+            axios
+                .get(`http://localhost:7335/api/folder/${this.store.id}`)
+            .then((res) => {
+                this.objs = res.data
+                console.log(this.objs)
+            })
+      }
+    },
+    closeModal() {
+      this.active = false;
+    }
   }
 }
 
@@ -71,6 +114,11 @@
 <style lang="less">
   .pageNotes{
     display: flex;
+    &__text {
+      margin: 100px auto 0;
+
+      font-size: 45px;
+    }
     &__main-container{
       width: 100%;
       max-width: 1440px;
@@ -202,6 +250,7 @@
             margin-bottom: 0;
         }
       }
+
 }
     
 </style>

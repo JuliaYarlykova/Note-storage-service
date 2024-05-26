@@ -33,16 +33,20 @@ export default {
     width: 100%;
     height: 100%;
     &__wrap{
-        border: 2px solid;
+        border: 2px solid @main;
         background-color: white;
         padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 300px;
+        height: 100px;
     }
     &__title{
         font-size: 30px;
         font-weight: 700;
+        text-align: center;
+        margin-bottom: 15px;
     }
     &__btn{
         padding: 10px;
@@ -53,7 +57,8 @@ export default {
     &__wrap-btn{
         margin-top: 10px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 50px;
     }
 }
 </style>
