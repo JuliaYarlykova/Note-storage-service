@@ -6,12 +6,14 @@
 		</div>
 		<div class="note__circle"></div>
 		<span
+			v-show="btnEdit"
 			class="material-symbols-outlined note__edit"
 			@click="$emit('editBtn', { act: true, title: title })"
 		>
 			edit
 		</span>
 		<span
+			v-show="btnDel"
 			class="material-symbols-outlined note__delete"
 			@click="$emit('deleteNote', { act: true, title: title })"
 		>
@@ -33,6 +35,14 @@ export default {
 			type: String,
 			default: '',
 			required: true,
+		},
+		btnEdit: {
+			type: Boolean,
+			default: true,
+		},
+		btnDel: {
+			type: Boolean,
+			default: true,
 		},
 	},
 }

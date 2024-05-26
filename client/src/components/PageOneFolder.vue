@@ -20,23 +20,27 @@
 	</div>
 	<NotePP v-show="isModalVisible" @close="closeModal()" />
 	<MessagePP v-show="active.act" @deleteF="deleteMes" />
-	<EditFolderPP v-show="activeEdit.act" />
+	<EditNotePP
+		v-show="activeEdit.act"
+		@editF="close"
+		:oldTitle="activeEdit.title"
+	/>
 </template>
 
 <script>
 import { useFolderStore, useNoteStore } from '@/main'
 import axios from 'axios'
 import CardNote from './card/CardNote.vue'
-import EditFolderPP from './pp/EditFolderPP.vue'
+import EditNotePP from './pp/EditNotePP.vue'
 import MessagePP from './pp/MessagePP.vue'
-
 import NotePP from './pp/NotePP.vue'
+
 export default {
 	components: {
 		CardNote,
 		NotePP,
 		MessagePP,
-		EditFolderPP,
+		EditNotePP,
 	},
 	setup() {
 		return {
@@ -47,6 +51,7 @@ export default {
 	data() {
 		return {
 			active: {},
+			activeEdit: {},
 			objs: [],
 			isModalVisible: false,
 		}
@@ -60,6 +65,12 @@ export default {
 			})
 	},
 	methods: {
+		close(act) {
+			this.objs.forEach(d =>
+				d.title === act.old ? (d.title = act.new) : console.log(1)
+			)
+			this.activeEdit.act = false
+		},
 		edit(act) {
 			this.activeEdit = act
 		},
