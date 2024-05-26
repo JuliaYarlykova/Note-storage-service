@@ -37,16 +37,16 @@ export default {
 .folder {
 	&__delete {
 		position: absolute;
-		bottom: 0;
-		right: 5px;
-		color: blanchedalmond;
+		bottom: 5px;
+		right: 10px;
+		color: white;
 		cursor: pointer;
 	}
 	&__edit {
 		position: absolute;
 		bottom: 0;
 		left: 5px;
-		color: blanchedalmond;
+		color: white;
 		cursor: pointer;
 	}
 	&__wrapper {
