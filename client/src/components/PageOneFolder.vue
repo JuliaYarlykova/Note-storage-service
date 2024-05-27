@@ -67,7 +67,7 @@ export default {
 	methods: {
 		close(act) {
 			this.objs.forEach(d =>
-				d.title === act.old ? (d.title = act.new) : console.log(1)
+				d.title === act.old ? (d.title = act.new) : console.log('')
 			)
 			this.activeEdit.act = false
 		},

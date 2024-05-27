@@ -2,10 +2,8 @@
 	<transition>
 		<div class="pp-note">
 			<div class="pp-note__container">
-				<h1>Редактор конспекта</h1>
-				<button class="pp-note__btn-close" @click="close">
-					<SvgX class="pp-note__svg-cls" />
-				</button>
+				<h1 class="pp-note__title">Редактор конспекта</h1>
+
 				<div class="pp-note__form form">
 					<input
 						type="text"
@@ -23,7 +21,6 @@
 <script>
 import { useFolderStore, useUserStore } from '@/main'
 import axios from 'axios'
-import SvgX from '../svg/SvgX.vue'
 
 export default {
 	setup() {
