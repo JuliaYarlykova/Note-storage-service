@@ -48,6 +48,8 @@ export default {
 		left: 5px;
 		color: white;
 		cursor: pointer;
+		margin-left: 5px;
+		margin-bottom: 8px;
 	}
 	&__wrapper {
 		position: relative;

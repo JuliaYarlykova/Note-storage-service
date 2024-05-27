@@ -244,6 +244,7 @@ export default {
 		border-width: 2px 0px 2px;
 		border-top-color: @dark_blue;
 		border-bottom-color: @dark_blue;
+		border-style: solid;
 		width: 100%;
 		background-color: @white2;
 		padding: 17px 20px 16px;
@@ -254,7 +255,7 @@ export default {
 		margin-bottom: 30px;
 
 		&::placeholder {
-			color: @placeholder_color;
+			color: @dark_blue;
 		}
 	}
 
