@@ -2,10 +2,8 @@
 	<transition>
 		<div class="pp-note">
 			<div class="pp-note__container">
-				<h1>Редактор папки</h1>
-				<button class="pp-note__btn-close" @click="close">
-					<SvgX class="pp-note__svg-cls" />
-				</button>
+				<h1 class="pp-note__title">Редактор папки</h1>
+
 				<div class="pp-note__form form">
 					<input
 						type="text"
@@ -23,7 +21,6 @@
 <script>
 import { useFolderStore, useUserStore } from '@/main'
 import axios from 'axios'
-import SvgX from '../svg/SvgX.vue'
 
 export default {
 	setup() {
@@ -46,12 +43,13 @@ export default {
 					title: this.inputData,
 					idUser: this.store.id,
 				})
-				.then(res => {
-					console.log(res)
-				})
-
+				.then(res => {})
+			this.$emit('deleteF', {
+				act: false,
+				old: this.store2.title,
+				new: this.inputData,
+			})
 			this.store2.title = this.inputData
-			this.$emit('deleteF', false)
 		},
 	},
 }

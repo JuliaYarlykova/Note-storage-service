@@ -75,7 +75,10 @@ export default {
 		}
 	},
 	methods: {
-		close() {
+		close(act) {
+			this.objs.forEach(d =>
+				d.title === act.old ? (d.title = act.new) : console.log('')
+			)
 			this.activeEdit.act = false
 		},
 		deleteMes(act) {
