@@ -7,12 +7,12 @@
 
 
 <h2>Запуск проекта:</h2>
-1. Клонировать репозиторий: git clone https://github.com/JuliaYarlykova/Note-storage-service.git
-2. Установить зависимости в папках client и server: npm install
-7. Запустить client: npm run dev (вы должны находиться в папке client)
-8. Запустить backend: npm run dev (вы должны находиться в папке server)
+* Клонировать репозиторий: git clone https://github.com/JuliaYarlykova/Note-storage-service.git
+* Установить зависимости в папках client и server: npm install
+* Запустить client: npm run dev (вы должны находиться в папке client)
+* Запустить backend: npm run dev (вы должны находиться в папке server)
 
 <h2>Участники проекта:</h2>
-<a alt="https://vk.com/yarlykova_04">Ярлыкова Юлия</a>
-<a alt="https://vk.com/vikachin">Чиняева Виктория</a>
+[Ярлыкова Юлия](https://vk.com/yarlykova_04)
+[Чиняева Виктория](https://vk.com/vikachin)
    
